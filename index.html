@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel KPI Dashboard</title>
+
+    <!-- SEO Meta -->
+    <meta
+      name="description"
+      content="Interactive KPI dashboard for hotel occupancy, ADR, and RevPAR with real-time visualization."
+    />
+    <meta
+      name="keywords"
+      content="KPI dashboard, hotel analytics, occupancy, ADR, RevPAR, revenue management, data visualization"
+    />
+    <meta name="author" content="Shivam Jadhav" />
+
+    <!-- Social Meta -->
+    <meta property="og:title" content="Hotel KPI Dashboard" />
+    <meta
+      property="og:description"
+      content="Track hotel KPIs with occupancy, ADR, and RevPAR charts."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Hotel KPI Dashboard</h1>
+    </header>
+
+    <main class="dashboard">
+      <!-- Left: Inputs -->
+      <section class="inputs" aria-labelledby="input-title">
+        <h2 id="input-title">Hotel Data Input</h2>
+
+        <label for="totalRooms">Total Rooms Available:</label>
+        <input type="number" id="totalRooms" placeholder="e.g. 150" min="0" />
+
+        <label for="roomsSold">Rooms Sold:</label>
+        <input type="number" id="roomsSold" placeholder="e.g. 120" min="0" />
+
+        <label for="revenue">Total Room Revenue ($):</label>
+        <input
+          type="number"
+          id="revenue"
+          placeholder="e.g. 18500"
+          min="0"
+          step="0.01"
+        />
+
+        <!-- NEW: Calculate Button -->
+        <button id="calculateBtn" type="button">Calculate KPIs</button>
+      </section>
+
+      <!-- Right: KPIs + Chart -->
+      <section class="results">
+        <div class="kpi-cards">
+          <div class="card blue">
+            <h3>
+              Occupancy
+            </h3>
+            <small>Percentage of rooms sold relative to total available rooms</small>
+            <p id="occupancy">N/A</p>
+          </div>
+
+          <div class="card green">
+            <h3>
+              ADR
+            </h3>
+            <small>Average Daily Rate</small>
+            <p id="adr">N/A</p>
+          </div>
+
+          <div class="card orange">
+            <h3>
+              RevPAR
+            </h3>
+            <small>Revenue Per Available Room</small>
+            <p id="revpar">N/A</p>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-header">
+            <h2>Performance Chart</h2>
+            <select id="chartType" aria-label="Select chart type">
+              <option value="bar">Bar</option>
+              <option value="line">Line</option>
+            </select>
+          </div>
+          <div class="chart-area">
+            <canvas id="kpiChart"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Hotel KPI Dashboard</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
